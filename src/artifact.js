@@ -20,8 +20,9 @@ export default {
    */
   sky: '/skybox',
 
-  glb: false,
-
+  glb: true,
+ 
+  file: 'artifact',
 
   latk: {
     // starting the file with a / loads it from the sandbox src dir.

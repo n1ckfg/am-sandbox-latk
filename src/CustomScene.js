@@ -22,23 +22,32 @@ export default class CustomScene {
     // builtins
     this.longestLayer = -1
     this.currentFrame = 0
+
+    this.light
   }
 
   beforeLoadModel({ engine, preload }) {
-    const { BufferGeometry, Group, Object3D } = this.THREE
-    if (!preload.assets.gltf) {
-      this.model = new Object3D()
-      this.model.position.set(0, 0, 0)
-    } else {
-      this.model = preload.assets.gltf.scene
+    //const { BufferGeometry, Group, Object3D } = this.THREE
+    const { BufferGeometry, Group, Object3D, AmbientLight } = this.THREE
+    this.model = new Object3D()
+    this.model.position.set(0, 0, 0)
+
+    if (preload.assets.gltf) {
+      preload.assets.gltf.scene.position.set(0, 2, 2)
+      this.model.add(preload.assets.gltf.scene)
+      
+      this.light = new AmbientLight(0x808080); 
+      this.light.color.setRGB(0.25, 1.0, 1.0);
+      this.model.add(this.light);
     }
 
     this.renderer = engine.renderer
     this.camera = engine.camera
     this.scene = engine.scene
     this.buffer = new BufferGeometry()
+    
     this.lineGroup = new Group()
-
+    this.lineGroup.scale.set(1, 1, 2)
     this.model.add(this.lineGroup)
 
     this.layers.forEach(layer => {
@@ -110,6 +119,8 @@ export default class CustomScene {
   }
 
   tick({ timestamp }) {
+    this.light.intensity = Math.random() + 1.0;
+
     const { latk } = this
 
     if (!latk || !latk.length) {
