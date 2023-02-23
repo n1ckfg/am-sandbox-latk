@@ -33,7 +33,7 @@ export default class CustomScene {
     this.model.position.set(0, 0, 0)
 
     if (preload.assets.gltf) {
-      preload.assets.gltf.scene.position.set(0, 2, 2)
+      preload.assets.gltf.scene.position.set(0, 0, 2)
       this.model.add(preload.assets.gltf.scene)
       
       this.light = new AmbientLight(0x808080); 
