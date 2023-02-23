@@ -35,13 +35,15 @@ export default {
     ],
   },
 
+  audio: '/artifact.mp3',
+ 
   /*
   cam: {
-    y: 1.7,
+    y: 3,
   },
 
   lookat: {
-    y: 1.7,
+    y: -1.7,
   },
 
   orbit: {
