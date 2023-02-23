@@ -30,7 +30,7 @@ export default class CustomScene {
     //const { BufferGeometry, Group, Object3D } = this.THREE
     const { BufferGeometry, Group, Object3D, AmbientLight } = this.THREE
     this.model = new Object3D()
-    this.model.position.set(0, 0, 0)
+    this.model.position.set(0, -2, 0)
 
     if (preload.assets.gltf) {
       preload.assets.gltf.scene.position.set(0, 0, 2)
